@@ -17,6 +17,7 @@ class CreateCartProductTable extends Migration
             $table->id();
             $table->unsignedInteger('cart_id');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('amount');
             $table->timestamps();
 
             $table->foreign('cart_id')
