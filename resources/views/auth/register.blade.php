@@ -68,6 +68,35 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="phone_nr" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone_nr" type="tel" class="form-control @error('phone_nr') is-invalid @enderror" name="phone_nr" value="{{ old('phone_nr') }}" required autocomplete="phone_nr">
+
+                                @error('phone_nr')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tin" class="col-md-4 col-form-label text-md-right">{{ __('Tax Identification Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tin" type="text" class="form-control @error('tin') is-invalid @enderror" name="tin" value="{{ old('tin') }}" required autocomplete="tin">
+
+                                @error('phone_nr')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
