@@ -15,15 +15,18 @@ class CreateUserAddressTable extends Migration
     {
         Schema::create('user_address', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
+            $table->string('street');
+            $table->string('street_number')->nullable();
+            $table->string('apartment_number')->nullable();
+            $table->string('city');
+            $table->string('country');
+            $table->string('postal_code');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('user_address');
