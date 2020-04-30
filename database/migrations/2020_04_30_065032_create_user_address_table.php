@@ -22,13 +22,20 @@ class CreateUserAddressTable extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('postal_code');
-
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
     public function down()
     {
+        Schema::table('user_addresses', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('user_addresses');
     }
 }
