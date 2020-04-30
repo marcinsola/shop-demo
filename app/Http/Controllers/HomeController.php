@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\Cart;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::all();
+        $userId = \Auth::id();
+        $cart = Cart::where('is_closed', 0)
+            ->orderBy('created_at', 'desc')
+            ->firstOrCreate(['user_id' => $userId]);
+
+        return view('home', compact(['products', 'cart']));
     }
 }
